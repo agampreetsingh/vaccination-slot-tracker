@@ -1,0 +1,13 @@
+
+.dark-shadow{
+    padding: 5%; 
+    box-shadow: 5px 10px 18px #4d4c4c5b
+}
+
+.material-icons {
+    vertical-align: middle;
+}
+
+.large-icon{
+    font-size: 35px;
+}

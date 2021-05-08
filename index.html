@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Vaccine Slot Tracker</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Quick way to check CoWIN vaccine center(s) availability.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+
+
+</head>
+
+<body class=" bg-dark text-light">
+    <nav id="page-navbar" class="navbar navbar-light bg-warning">
+        <a class="navbar-brand" href="#">
+            <span class="material-icons large-icon">
+                medication
+            </span>
+            <strong>Vaccination Slot Tracker</strong>
+        </a>
+
+        <form class="d-flex">
+            <div class="btn-group" role="group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label id="lightThemeButton" class="btn btn-outline-light btn-sm" for="btnradio1"
+                    onclick="enableLightTheme()">Light</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label id="darkThemeButton" class="btn btn-outline-dark btn-sm" for="btnradio2"
+                    onclick="enableDarkTheme()" style="pointer-events: none;">Dark</label>
+            </div>
+        </form>
+    </nav>
+    <div class="container">
+        <br />
+        <div class=row>
+            <div class="col-2">
+
+            </div>
+            <div class="col-8">
+                <form>
+
+                    <div class = "dark-shadow rounded">
+                        <span class="material-icons">
+                            filter_alt
+                            </span>
+                        <strong> Select your preferences for vaccination  </strong>
+                        <hr>
+
+                        <label class="form-check-label font-weight-bold">Location: </label>
+    
+                        <div class="form-check form-check-inline">
+                            <input id="searchbypincode" class="form-check-input" type="radio" name="searchBy"
+                                value="pincode" checked />
+                            <label class="form-check-label" for="searchpincode">Pincode</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input id="searchbydistrict" class="form-check-input" type="radio" name="searchBy"
+                                value="district" />
+                            <label class="form-check-label" for="searchdistrict">District</label>
+                        </div>
+                        
+                        <div id="pincodeGroup">
+                            <input id="pincode" class="form-control" type="text" placeholder="Pincode" />
+                        </div>
+                        <div id="districtGroup" class="d-none">
+                            <div class="row">
+                                <div class="col">
+                                    <select id="selectState" class="form-control selectpicker border" data-live-search="true"
+                                data-size="10" data-style="btn-default" title="Select state">
+                            </select>
+                                </div>
+                                <div class="col">
+                                    <select id="selectDistrict" class="form-control selectpicker border"
+                                data-live-search="true" data-size="10" data-style="btn-default"
+                                title="Select district">
+                            </select>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        <br>
+
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label class="form-check-label font-weight-bold">Age: </label>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="age18" value="18" checked />
+                                            <label class="form-check-label" for="age18">18+</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="age45" value="45" />
+                                            <label class="form-check-label" for="age45">45+ </label>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label class="form-check-label font-weight-bold">Fee : </label>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="free" value="Free" checked />
+                                            <label class="form-check-label" for="free">Free</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="paid" value="Paid" />
+                                            <label class="form-check-label" for="paid">Paid</label>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label class="form-check-label font-weight-bold">Vaccine: </label>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="covishieldChecked" value="COVISHIELD" checked />
+                                            <label class="form-check-label" for="covishieldChecked">Covishield</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="covaxinChecked" value="COVAXIN" checked/>
+                                            <label class="form-check-label" for="covaxinChecked">Covaxin</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                        
+                            </tbody>
+                        </table>
+                        
+
+                        
+                        
+                        
+                        <br>
+                        <button id="btnCheckAvailability" class="btn btn-success mb-3" type="button" onclick='btnCheckAvailabilityCall()'><span class="material-icons">
+                            search
+                            </span>Find Slots
+                        </button>
+                    </div>
+                </form>
+                <div class="dark-shadow rounded alert-light" id="accordionExample" style="padding: 1%">
+                    <div>
+                      <div id="headingOne">
+                        
+                          <div data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="pointer-events: painted; cursor:grab;">
+                            <span class="material-icons">
+                                settings
+                                </span> <u>Tracker Settings</u>
+                          </div>
+                        
+                      </div>
+                  
+                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class = "alert-light">
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input id="autocheck" class="form-check-input" type="checkbox" />
+                                <label for="autocheck">Auto-check frequency: <input
+                                        id="autoCheckTime" class="text-center border rounded" type="number"
+                                        value="1" style="width:10%" min="1"/> min(s).</label>
+                            </div>
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input id="audioalert" class="form-check-input" type="checkbox" />
+                                <label class="form-check-label" for="audioalert">Notify availability via audio <a href="#"
+                                        onclick='audioalert()'><span class="material-icons">
+                                            play_circle
+                                            </span> Sample sound</a> </label>
+        
+                            </div>
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input id="opencowin" class="form-check-input" type="checkbox" />
+                                <label class="form-check-label" for="opencowin">Take me to registration page if slots are
+                                    available</label>
+                            </div>
+        
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+            </div>
+            <div class="col-2">
+
+            </div>
+        </div>
+
+        <hr>
+        <div class="row text-center">
+            <p>Available vaccination Center(s)</p>
+            <div id="notAvailableMessage" class="alert alert-danger d-none" role="alert">
+                No Slots found...
+            </div>
+            <div id="tablediv" class="table-responsive d-none">
+                <table id="table" class="table-striped table-dark" data-search="true" data-show-columns="true" data-sortable="true">
+                    <thead>
+                        <tr>
+                            <th data-field="centerName" data-sortable="true">Vaccination Center Name</th>
+                            <th data-field="date" data-sortable="true">Date</th>
+                            <th data-field="availableCapacity" data-sortable="true">Availability</th>
+                            <th data-field="age" data-sortable="true">Age</th>
+                            <th data-field="vaccine" data-sortable="true">Vaccine Type</th>
+                            <th data-field="vaccine_fees" data-sortable="true" data-formatter="VaccineFeesFormatter">
+                                Price
+                            </th>
+                            <th data-field="googlemaplink" data-formatter="LinkFormatter">Google Map</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="page-footer" class="fixed-bottom text-light bg-dark">
+        
+        <div class="row">
+            <div class="col">
+                    <!-- Grid container -->
+        Built and packaged by: <a href = "www.agampreetsingh.com" style="">Agam</a>
+        <!-- Section: Social media -->
+            </div>
+
+            
+            <div class="col text-end">
+                <!-- Twitter -->
+            <a
+            class="btn btn-link btn-floating btn-lg"
+            href="https://twitter.com/agampreetsingh_"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-twitter"></i
+          ></a>
+    
+
+          <!-- Linkedin -->
+          <a
+            class="btn btn-link btn-floating btn-lg"
+            href="https://www.linkedin.com/in/agampreet-singh-arora/"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <!-- Github -->
+          <a
+            class="btn btn-link btn-floating btn-lg"
+            href="https://github.com/agampreetsingh"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-github"></i
+          ></a>
+            
+        <!-- Section: Social media -->
+            </div>
+        </div>
+
+        
+          
+           
+    
+            
+        </div>
+
+</body>
+<script src="js/constants.js"></script>
+<script src="js/scraper.js"></script>
+<script src="js/themechanger.js"></script>
+<script src="js/vaccineDataUtil.js"></script>
+
+</html>
