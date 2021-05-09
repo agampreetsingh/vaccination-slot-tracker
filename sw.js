@@ -1,8 +1,5 @@
 console.log('Started', self);
-self.addEventListener('install', function(event) {
-  self.skipWaiting();
-  console.log('Installed', event);
-});
+
 self.addEventListener('install', function(e) {
   e.waitUntil(
     caches.open('airhorner').then(function(cache) {
