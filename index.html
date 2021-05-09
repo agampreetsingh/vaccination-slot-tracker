@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="description" content="A tracker check CoWin vaccination slots">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
@@ -22,7 +22,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4PH44SEDQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
+        gtag('config', 'G-R4PH44SEDQ');
+    </script>
 
 </head>
 
@@ -56,15 +64,15 @@
             <div class="col-12">
                 <form>
 
-                    <div class = "dark-shadow rounded">
+                    <div class="dark-shadow rounded">
                         <span class="material-icons">
                             filter_alt
-                            </span>
-                        <strong> Select your preferences for vaccination  </strong>
+                        </span>
+                        <strong> Select your preferences for vaccination </strong>
                         <hr>
 
                         <label class="form-check-label font-weight-bold">Location: </label>
-    
+
                         <div class="form-check form-check-inline">
                             <input id="searchbypincode" class="form-check-input" type="radio" name="searchBy"
                                 value="pincode" checked />
@@ -75,28 +83,29 @@
                                 value="district" />
                             <label class="form-check-label" for="searchdistrict">District</label>
                         </div>
-                        
+
                         <div id="pincodeGroup">
                             <input id="pincode" class="form-control" type="text" placeholder="Pincode" />
                         </div>
                         <div id="districtGroup" class="d-none">
                             <div class="row">
                                 <div class="col">
-                                    <select id="selectState" class="form-control selectpicker border" data-live-search="true"
-                                data-size="10" data-style="btn-default" title="Select state">
-                            </select>
+                                    <select id="selectState" class="form-control selectpicker border"
+                                        data-live-search="true" data-size="10" data-style="btn-default"
+                                        title="Select state">
+                                    </select>
                                 </div>
                                 <div class="col">
                                     <select id="selectDistrict" class="form-control selectpicker border"
-                                data-live-search="true" data-size="10" data-style="btn-default"
-                                title="Select district">
-                            </select>
+                                        data-live-search="true" data-size="10" data-style="btn-default"
+                                        title="Select district">
+                                    </select>
                                 </div>
                             </div>
-                            
-                            
+
+
                         </div>
-                        
+
                         <br>
 
                         <table>
@@ -113,7 +122,8 @@
                                     </td>
                                     <td>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="age45" value="45" checked/>
+                                            <input class="form-check-input" type="checkbox" id="age45" value="45"
+                                                checked />
                                             <label class="form-check-label" for="age45">45+ </label>
                                         </div>
                                     </td>
@@ -125,7 +135,8 @@
                                     </td>
                                     <td>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="free" value="Free" checked />
+                                            <input class="form-check-input" type="checkbox" id="free" value="Free"
+                                                checked />
                                             <label class="form-check-label" for="free">Free</label>
                                         </div>
                                     </td>
@@ -143,78 +154,84 @@
                                     </td>
                                     <td>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="covishieldChecked" value="COVISHIELD" checked />
+                                            <input class="form-check-input" type="checkbox" id="covishieldChecked"
+                                                value="COVISHIELD" checked />
                                             <label class="form-check-label" for="covishieldChecked">Covishield</label>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="covaxinChecked" value="COVAXIN" checked/>
+                                            <input class="form-check-input" type="checkbox" id="covaxinChecked"
+                                                value="COVAXIN" checked />
                                             <label class="form-check-label" for="covaxinChecked">Covaxin</label>
                                         </div>
                                     </td>
                                 </tr>
-                        
+
                             </tbody>
                         </table>
-                        
 
-                        
-                        
-                        
+
+
+
+
                         <br>
-                        <button id="btnCheckAvailability" class="btn btn-success mb-3" type="button" onclick='btnCheckAvailabilityCall()'><span class="material-icons">
-                            search
+                        <button id="btnCheckAvailability" class="btn btn-success mb-3" type="button"
+                            onclick='btnCheckAvailabilityCall()'><span class="material-icons">
+                                search
                             </span>Find Slots
                         </button>
                     </div>
                 </form>
                 <div class="dark-shadow rounded alert-light" id="accordionExample" style="padding: 1%">
                     <div>
-                      <div id="headingOne">
-                        
-                          <div data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="pointer-events: painted; cursor:grab;">
-                            <span class="material-icons">
-                                settings
+                        <div id="headingOne">
+
+                            <div data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                aria-controls="collapseOne" style="pointer-events: painted; cursor:grab;">
+                                <span class="material-icons">
+                                    settings
                                 </span> <u>Change Tracker Settings</u>
-                          </div>
-                        
-                      </div>
-                  
-                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class = "alert-light">
-                            <br>
-                            <div class="form-check form-check-inline">
-                                <input id="autocheck" class="form-check-input" type="checkbox" />
-                                <label for="autocheck">Auto-check frequency: <input
-                                        id="autoCheckTime" class="text-center border rounded" type="number"
-                                        value="1" style="width:10%" min="1"/> min(s).</label>
                             </div>
-                            <br>
-                            <div class="form-check form-check-inline">
-                                <input id="audioalert" class="form-check-input" type="checkbox" />
-                                <label class="form-check-label" for="audioalert">Notify availability via audio <a href="#"
-                                        onclick='audioalert()'><span class="material-icons">
-                                            play_circle
-                                            </span> Sample sound</a> </label>
-        
-                            </div>
-                            <br>
-                            <div class="form-check form-check-inline">
-                                <input id="opencowin" class="form-check-input" type="checkbox" />
-                                <label class="form-check-label" for="opencowin">Take me to registration page if slots are
-                                    available</label>
-                            </div>
-        
+
                         </div>
-                      </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#accordionExample">
+                            <div class="alert-light">
+                                <br>
+                                <div class="form-check form-check-inline">
+                                    <input id="autocheck" class="form-check-input" type="checkbox" />
+                                    <label for="autocheck">Auto-check frequency: <input id="autoCheckTime"
+                                            class="text-center border rounded" type="number" value="1" style="width:10%"
+                                            min="1" /> min(s).</label>
+                                </div>
+                                <br>
+                                <div class="form-check form-check-inline">
+                                    <input id="audioalert" class="form-check-input" type="checkbox" />
+                                    <label class="form-check-label" for="audioalert">Notify availability via audio <a
+                                            href="#" onclick='audioalert()'><span class="material-icons">
+                                                play_circle
+                                            </span> Sample sound</a> </label>
+
+                                </div>
+                                <br>
+                                <div class="form-check form-check-inline">
+                                    <input id="opencowin" class="form-check-input" type="checkbox" />
+                                    <label class="form-check-label" for="opencowin">Take me to registration page if
+                                        slots are
+                                        available</label>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
-                  </div>
+                </div>
 
             </div>
             <div class="col-0">
-                
+
             </div>
         </div>
 
@@ -225,7 +242,8 @@
                 No Slots found...
             </div>
             <div id="tablediv" class="table-responsive d-none">
-                <table id="table" class="table-striped table-dark table-sm" data-search="true" data-show-toggle="true" data-show-columns="true" data-sortable="true">
+                <table id="table" class="table-striped table-dark table-sm" data-search="true" data-show-toggle="true"
+                    data-show-columns="true" data-sortable="true">
                     <thead>
                         <tr>
                             <th data-field="centerName" data-sortable="true">Vaccination Center Name</th>
@@ -247,53 +265,38 @@
     </div>
 
     <div id="page-footer" class="fixed-bottom text-light bg-dark">
-        
+
         <div class="row">
             <div class="col">
-                    <!-- Grid container -->
-        Built by: <a href = "www.agampreetsingh.com" style="">Agam</a>
-        <!-- Section: Social media -->
+                <!-- Grid container -->
+                Built by: <a href="www.agampreetsingh.com" style="">Agam</a>
+                <!-- Section: Social media -->
             </div>
 
-            
+
             <div class="col text-end">
                 <!-- Twitter -->
-            <a
-            class="btn btn-link btn-floating btn-lg"
-            href="https://twitter.com/agampreetsingh_"
-            role="button"
-            data-mdb-ripple-color="dark"
-            ><i class="fab fa-twitter"></i
-          ></a>
-    
+                <a class="btn btn-link btn-floating btn-lg" href="https://twitter.com/agampreetsingh_" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
 
-          <!-- Linkedin -->
-          <a
-            class="btn btn-link btn-floating btn-lg"
-            href="https://www.linkedin.com/in/agampreet-singh-arora/"
-            role="button"
-            data-mdb-ripple-color="dark"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <!-- Github -->
-          <a
-            class="btn btn-link btn-floating btn-lg"
-            href="https://github.com/agampreetsingh"
-            role="button"
-            data-mdb-ripple-color="dark"
-            ><i class="fab fa-github"></i
-          ></a>
-            
-        <!-- Section: Social media -->
+
+                <!-- Linkedin -->
+                <a class="btn btn-link btn-floating btn-lg" href="https://www.linkedin.com/in/agampreet-singh-arora/"
+                    role="button" data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-link btn-floating btn-lg" href="https://github.com/agampreetsingh" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+
+                <!-- Section: Social media -->
             </div>
         </div>
 
-        
-          
-           
-    
-            
-        </div>
+
+
+
+
+
+    </div>
 
 </body>
 <script src="js/constants.js"></script>
