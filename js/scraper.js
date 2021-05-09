@@ -102,6 +102,8 @@ function btnCheckAvailabilityCall() {
         var locationPreference = document.getElementById("pincode").value.trim();
     } else {
         var locationPreference = document.getElementById("selectDistrict").value;
+        var selectedDistrict = document.getElementById("selectDistrict");
+        var locationName = selectedDistrict.options[selectedDistrict.selectedIndex].text;
     }
     
     const isValidData = (isSearchByPincode && locationPreference?.length == 6) || (!isSearchByPincode && locationPreference)
@@ -157,6 +159,10 @@ function btnCheckAvailabilityCall() {
 
                 if (availabilityData.length == 0) {
                     $("#notAvailableMessage").removeClass('d-none');
+                    if(isSearchByPincode)
+                        $("#notAvailableMessage").html("No Slots found for: "+locationPreference);
+                    else
+                    $("#notAvailableMessage").html("No Slots found for: "+locationName);
                     $("#tablediv").addClass('d-none');
                 } else {
                     $("#notAvailableMessage").addClass('d-none');
