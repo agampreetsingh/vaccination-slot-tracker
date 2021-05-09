@@ -33,5 +33,7 @@
     ],
     "url": "https://agampreetsingh.github.io/vaccination-slot-tracker/",
     "manifestUrl": "https://agampreetsingh.github.io/vaccination-slot-tracker/config/manifest.json",
-    "lang": "English"
+    "lang": "English",
+    "background_color": "",
+    "screenshots": []
 }
