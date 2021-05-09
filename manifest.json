@@ -1,7 +1,7 @@
 {
     "name": "VaccinationSlotTracker",
     "short_name": "VaccinationSlotTracker",
-    "start_url": "https://agampreetsingh.github.io/vaccination-slot-tracker/",
+    "start_url": "https://agampreetsingh.github.io/vaccination-slot-tracker/index.html",
     "display": "standalone",
     "description": "A tracker to check CoWin vaccination slots",
     "icons": [
