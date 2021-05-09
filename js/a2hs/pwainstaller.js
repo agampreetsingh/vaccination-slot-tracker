@@ -13,6 +13,7 @@ window.addEventListener("beforeinstallprompt", e => {
   installButton.addEventListener("click", installApp);
 });
 
+
 function installApp() {
     // Show the prompt
     deferredPrompt.prompt();
