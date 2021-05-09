@@ -32,6 +32,7 @@
         gtag('config', 'G-R4PH44SEDQ');
     </script>
     <link rel="icon" href="images/touch/homescreen168.png" type="image/png">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@pwabuilder/pwainstall"></script>
 </head>
 
 <body class=" bg-dark text-light" style="padding-bottom: 100px;">
@@ -55,6 +56,34 @@
             </div>
         </form>
     </nav>
+    <button id="triggerInstallButton" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal">
+        .
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            
+            <div class="modal-body">
+                <div class = "row alert-danger rounded">
+                    <div class="col">
+                        <div class = "text-center">
+                            You can also install Vaccination Slot Tracker as an App in your phone 
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button id="install_button" type="button" class="btn form-check form-inline btn-primary" >
+                        Add to device
+                      </button>
+                </div>
+                
+            </div>
+            
+          </div>
+        </div>
+      </div>
     <div class="container">
         <br />
         <div class=row>
@@ -260,7 +289,7 @@
                 </table>
             </div>
         </div>
- 
+
 
     </div>
 
