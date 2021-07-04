@@ -5,9 +5,9 @@
     <title>Vaccine Slot Tracker</title>
 
     <meta charset="utf-8" />
-    <meta name="description" content="A tracker check CoWin vaccination slots">
+    <meta name="description" content="A tracker to check CoWin vaccination slots">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <link href="manifest.json" rel="manifest">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
@@ -31,10 +31,11 @@
 
         gtag('config', 'G-R4PH44SEDQ');
     </script>
-
+    <link rel="icon" href="images/touch/homescreen168.png" type="image/png">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@pwabuilder/pwainstall"></script>
 </head>
 
-<body class=" bg-dark text-light">
+<body class=" bg-dark text-light" style="padding-bottom: 100px;">
     <nav id="page-navbar" class="navbar navbar-light bg-warning">
         <a class="navbar-brand" href="#">
             <span class="material-icons large-icon">
@@ -49,12 +50,38 @@
                 <label id="lightThemeButton" class="btn btn-outline-light btn-sm" for="btnradio1"
                     onclick="enableLightTheme()">Light</label>
 
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <input type="radio" class="btn-check btn-sm" name="btnradio" id="btnradio2" autocomplete="off">
                 <label id="darkThemeButton" class="btn btn-outline-dark btn-sm" for="btnradio2"
                     onclick="enableDarkTheme()" style="pointer-events: none;">Dark</label>
             </div>
         </form>
     </nav>
+    <button id="triggerInstallButton" type="button" class="btn btn-primary d-none" data-toggle="modal"
+        data-target="#exampleModal">
+        .
+    </button>
+
+    <!-- Modal -->
+<div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <div data-dismiss="modal" aria-label="Close" style="cursor: pointer">
+            <span class="material-icons" aria-hidden="true">close</span>
+          </div>
+        </div>
+        <div class="modal-body">
+          Tap on 'Quick Install' to <em>install Vaccination-Slot-Tracker</em> as an app
+        </div>
+        <div class="modal-footer">
+          
+          <button id="install_button" type="button" class="btn btn-primary">Quick Install</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="container">
         <br />
         <div class=row>
@@ -264,12 +291,13 @@
 
     </div>
 
-    <div id="page-footer" class="fixed-bottom text-light bg-dark">
+
+    <div id="page-footer" class="footer-fixed text-light bg-dark">
 
         <div class="row">
             <div class="col">
                 <!-- Grid container -->
-                Built by: <a href="www.agampreetsingh.com" style="">Agam</a>
+                Built by: <a href="mailto:info.agampreetsingh@gmail.com">Agam</a>
                 <!-- Section: Social media -->
             </div>
 
@@ -303,5 +331,20 @@
 <script src="js/scraper.js"></script>
 <script src="js/themechanger.js"></script>
 <script src="js/vaccineDataUtil.js"></script>
+<script>
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js', {
+        scope: '.' // <--- THIS BIT IS REQUIRED
+    }).then(function(registration) {
+        // Registration was successful
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+        // registration failed :(
+        console.log('ServiceWorker registration failed: ', err);
+    });
+}
+</script>
+<script src="js/a2hs/pwainstaller.js"></script>
 
 </html>

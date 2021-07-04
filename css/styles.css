@@ -11,3 +11,8 @@
 .large-icon{
     font-size: 35px;
 }
+.footer-fixed{
+    position: fixed;
+    bottom:0; 
+    width: 100%; 
+}
